@@ -13,19 +13,19 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.7;
+            line-height: 1.6;
             color: #333;
-            background: #fff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         
         .header {
-            background: #1a472a;
+            background: linear-gradient(135deg, #1a472a 0%, #2d5f3f 100%);
             color: white;
-            padding: 20px 0;
+            padding: 25px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
         
         .header-content {
@@ -35,18 +35,19 @@
         }
         
         .header h1 {
-            font-size: 1.6em;
+            font-size: 1.8em;
             margin-bottom: 5px;
+            font-weight: 700;
         }
         
         .header .subtitle {
-            font-size: 0.95em;
+            font-size: 1em;
             opacity: 0.95;
         }
         
         nav {
-            background: #2d5f3f;
-            padding: 0;
+            background: rgba(26, 71, 42, 0.95);
+            backdrop-filter: blur(10px);
         }
         
         nav ul {
@@ -62,70 +63,126 @@
             display: block;
             color: white;
             text-decoration: none;
-            padding: 15px 20px;
-            transition: background 0.3s;
+            padding: 12px 18px;
+            transition: all 0.3s;
+            position: relative;
         }
         
         nav a:hover {
-            background: #1a472a;
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #4ade80;
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+        
+        nav a:hover:after {
+            width: 80%;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 30px 20px;
+            background: white;
+            box-shadow: 0 0 40px rgba(0,0,0,0.2);
         }
         
         .profile-section {
             display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: 280px 1fr;
+            gap: 35px;
+            margin-bottom: 35px;
             align-items: start;
+        }
+        
+        .profile-image-container {
+            position: relative;
         }
         
         .profile-image {
             width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .badges {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
         }
         
         .profile-content h2 {
-            font-size: 2em;
-            color: #1a472a;
-            margin-bottom: 10px;
+            font-size: 2.2em;
+            background: linear-gradient(135deg, #1a472a 0%, #2d5f3f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
             font-style: italic;
+            font-weight: 800;
         }
         
         .profile-content h3 {
             color: #2d5f3f;
             font-weight: 600;
-            margin-bottom: 20px;
-            font-size: 1.1em;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            line-height: 1.5;
+        }
+        
+        .profile-content p {
+            margin-top: 12px;
+            text-align: justify;
         }
         
         .section {
-            margin-bottom: 50px;
+            margin-bottom: 35px;
         }
         
         .section h3 {
             color: #1a472a;
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #2d5f3f;
-            padding-bottom: 10px;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            border-bottom: 3px solid transparent;
+            border-image: linear-gradient(90deg, #2d5f3f, #4ade80);
+            border-image-slice: 1;
+            padding-bottom: 8px;
+            font-weight: 700;
         }
         
         .news-item {
-            margin-bottom: 15px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 5px;
+            margin-bottom: 12px;
+            padding: 12px 15px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-radius: 8px;
             border-left: 4px solid #2d5f3f;
+            transition: all 0.3s;
+        }
+        
+        .news-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(45,95,63,0.1);
         }
         
         .news-item strong {
             color: #1a472a;
+            font-weight: 700;
         }
         
         .research-interests ul {
@@ -134,13 +191,18 @@
         }
         
         .research-interests li {
-            padding: 12px 0;
-            padding-left: 25px;
+            padding: 10px 0 10px 25px;
             position: relative;
+            transition: all 0.3s;
+        }
+        
+        .research-interests li:hover {
+            background: #f0fdf4;
+            padding-left: 30px;
         }
         
         .research-interests li:before {
-            content: "▪";
+            content: "◆";
             color: #2d5f3f;
             font-weight: bold;
             position: absolute;
@@ -148,63 +210,90 @@
         }
         
         .publication {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 5px;
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+            border-radius: 8px;
+            border-left: 3px solid #2d5f3f;
+            transition: all 0.3s;
+        }
+        
+        .publication:hover {
+            box-shadow: 0 4px 15px rgba(45,95,63,0.15);
+            transform: translateY(-2px);
         }
         
         .publication a {
             color: #2d5f3f;
             text-decoration: none;
+            font-weight: 600;
         }
         
         .publication a:hover {
+            color: #1a472a;
             text-decoration: underline;
         }
         
         .contact-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 15px;
         }
         
         .contact-links a {
-            color: #2d5f3f;
+            color: white;
+            background: linear-gradient(135deg, #2d5f3f 0%, #1a472a 100%);
             text-decoration: none;
-            padding: 8px 16px;
-            border: 2px solid #2d5f3f;
-            border-radius: 5px;
+            padding: 10px 18px;
+            border-radius: 8px;
             transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(45,95,63,0.2);
         }
         
         .contact-links a:hover {
-            background: #2d5f3f;
-            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(45,95,63,0.3);
         }
         
         .badge {
             display: inline-block;
-            background: #2d5f3f;
+            background: linear-gradient(135deg, #2d5f3f 0%, #1a472a 100%);
             color: white;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.85em;
-            margin: 5px 5px 5px 0;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(45,95,63,0.3);
+            transition: all 0.3s;
+        }
+        
+        .badge:hover {
+            transform: scale(1.05);
         }
         
         .project-box {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
             border-left: 4px solid #2d5f3f;
+            transition: all 0.3s;
+        }
+        
+        .project-box:hover {
+            box-shadow: 0 6px 20px rgba(45,95,63,0.15);
+            transform: translateX(5px);
         }
         
         .project-box h4 {
             color: #1a472a;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .project-box p {
+            margin: 5px 0;
         }
         
         @media (max-width: 768px) {
@@ -243,12 +332,12 @@
     
     <div class="container">
         <section id="home" class="profile-section">
-            <div>
+            <div class="profile-image-container">
                 <img src="https://research.tees.ac.uk/files-asset/56939096/Zia_Photo_2.jpg?w=250&f=jpg" alt="Dr. Zia Ush Shamszaman" class="profile-image">
-                <div style="margin-top: 20px;">
+                <div class="badges">
                     <div class="badge">Senior IEEE Member</div>
                     <div class="badge">472+ Citations</div>
-                    <div class="badge">PhD Supervisor</div>
+                    <div class="badge">BCS Member</div>
                 </div>
             </div>
             <div class="profile-content">
@@ -257,80 +346,59 @@
                 School of Computing, Engineering & Digital Technologies<br>
                 Teesside University, Middlesbrough, UK</h3>
                 
-                <h4 style="margin-top: 20px; color: #1a472a;">About me</h4>
-                <p style="margin-top: 10px;">
-                    I am a <strong>Senior Lecturer in Computer Science</strong> at the <strong>Department of Computing & Games</strong>, School of Computing, Engineering & Digital Technologies (SCEDT), <strong>Teesside University</strong>. Before transitioning to academia, I worked as a postdoctoral researcher at Dublin City University and University College Cork, Ireland, and as a part-time teacher at the National University of Ireland Galway.
-                </p>
-                <p style="margin-top: 15px;">
-                    My research interests encompass <strong>Cybersecurity</strong>, <strong>AI Governance</strong>, <strong>Secure and Safe AI</strong>, and the <strong>Internet of Things (IoT)</strong>. I take an interdisciplinary approach that bridges academia and industry through innovative research with practical societal impact.
-                </p>
-                <p style="margin-top: 15px;">
-                    I received my <strong>PhD in Computer Science</strong> from the <strong>University of Galway</strong> (formerly National University of Ireland Galway), funded by Science Foundation Ireland. I hold a <strong>Master of Engineering</strong> degree from <strong>Hankuk University of Foreign Studies</strong>, South Korea (2011-2013), where I was awarded a Foreign Student Scholarship. Before academia, I worked for over 7 years in the IT industry in Bangladesh, serving as a Technical Consultant, Project Manager, and Senior Network & Security Engineer, leading major government projects including Bangladesh's Machine Readable Passport & Visa (MRP & V) and the Bangladesh Automated Clearing House (BACH) for the Central Bank.
-                </p>
-                <p style="margin-top: 15px;">
-                    As a recognized academic leader, I frequently participate in professional discussions, including invited guest appearances on industry-led panels, podcasts, and discussions focusing on cybersecurity, AI governance, and AI ethics. I am a <strong>Senior Member of IEEE</strong>, a member of the <strong>Elsevier Advisory Panel</strong>, and actively contribute to the <strong>World Wide Web Consortium (W3C)</strong> and various IEEE communities including Artificial Intelligence, IoT, Cloud Computing, and Big Data.
-                </p>
+                <p>I am a Senior Lecturer in Computer Science at the Department of Computing & Games, School of Computing, Engineering & Digital Technologies (SCEDT), Teesside University. My research encompasses Cybersecurity, AI Governance, Secure and Safe AI, and the Internet of Things (IoT). I take an interdisciplinary approach that bridges academia and industry through innovative research with practical societal impact.</p>
+                <p>I received my PhD in Computer Science from the University of Galway (formerly National University of Ireland Galway), funded by Science Foundation Ireland, and my Master of Engineering degree from Hankuk University of Foreign Studies, South Korea. Before academia, I worked for over 7 years in the IT industry in Bangladesh, leading major government projects including Bangladesh's Machine Readable Passport & Visa and the Bangladesh Automated Clearing House for the Central Bank.</p>
+                <p>As a recognized academic leader, I frequently participate in professional discussions, including invited guest appearances on industry-led panels, podcasts, and discussions focusing on cybersecurity, AI governance, and AI ethics. I am a Senior Member of IEEE, a member of the British Computer Society, Elsevier Advisory Panel, and the World Wide Web Consortium (W3C).</p>
             </div>
         </section>
         
         <section id="news" class="section">
             <h3>What's New</h3>
             <div class="news-item">
-                <strong>New!!</strong> [January 2025] Our work: <em>"Benchmarking Classical, Deep, and Generative Models for Human Activity Recognition"</em> published on arXiv. <a href="https://arxiv.org/abs/2501.08321" target="_blank">arXiv:2501.08321</a>
+                <strong>New!</strong> [January 2025] "Benchmarking Classical, Deep, and Generative Models for Human Activity Recognition" published on arXiv. <a href="https://arxiv.org/abs/2501.08321" target="_blank">arXiv:2501.08321</a>
             </div>
             <div class="news-item">
-                <strong>New!!</strong> [December 2024] Our paper: <em>"Many-to-One Adversarial Consensus: Exposing Multi-Agent Collusion Risks in AI-Based Healthcare"</em> published on arXiv. <a href="https://arxiv.org/abs/2512.03097" target="_blank">arXiv:2512.03097</a>
+                <strong>New!</strong> [December 2024] "Many-to-One Adversarial Consensus: Exposing Multi-Agent Collusion Risks in AI-Based Healthcare" published on arXiv. <a href="https://arxiv.org/abs/2512.03097" target="_blank">arXiv:2512.03097</a>
             </div>
             <div class="news-item">
-                <strong>New!!</strong> [September 2024] Media contribution: <em>"Fortifying Your Cyber-Resilience Against Deepfake Social Engineering Attacks"</em> - Expert commentary on emerging cybersecurity threats.
+                <strong>New!</strong> [September 2024] Media contribution: "Fortifying Your Cyber-Resilience Against Deepfake Social Engineering Attacks" - Expert commentary on emerging cybersecurity threats.
             </div>
             <div class="news-item">
-                <strong>New!!</strong> [April 2025] Our work: <em>"Do LLMs trust AI regulation? Emerging behaviour of game-theoretic LLM agents"</em> published on arXiv. <a href="https://arxiv.org/abs/2504.08640" target="_blank">arXiv:2504.08640</a>
-            </div>
-            <div class="news-item">
-                <strong>New!!</strong> [May 2025] Our work: <em>"Co-evolutionary Dynamics of Attack and Defence in Cybersecurity"</em> published on arXiv. <a href="https://arxiv.org/abs/2505.19338" target="_blank">arXiv:2505.19338</a>
+                <strong>New!</strong> [May 2025] "Co-evolutionary Dynamics of Attack and Defence in Cybersecurity" published on arXiv. <a href="https://arxiv.org/abs/2505.19338" target="_blank">arXiv:2505.19338</a>
             </div>
         </section>
         
         <section id="research" class="section research-interests">
             <h3>Research Interests</h3>
-            <p style="margin-bottom: 20px;">
-                My interdisciplinary research lies at the intersection of <strong>Cybersecurity</strong>, <strong>Artificial Intelligence (AI) Ethics & Safety</strong>, and <strong>IoT</strong>. My main research interests include:
-            </p>
+            <p style="margin-bottom: 15px;">My interdisciplinary research lies at the intersection of Cybersecurity, Artificial Intelligence (AI) Ethics & Safety, and IoT. My main research interests include:</p>
             <ul>
-                <li><strong>AI-Driven Cybersecurity</strong> - Developing intelligent systems for threat detection, model hardening, adversarial defense, and secure AI implementations</li>
-                <li><strong>AI Ethics and Safety</strong> - Exploring frameworks for explainability, trustworthy AI, and systemic safety, particularly in high-stakes domains like healthcare</li>
-                <li><strong>AI Governance</strong> - Investigating exploratory and evolutionary game-theoretical approaches to AI governance, safety, and multi-agent systems</li>
-                <li><strong>Internet of Things (IoT)</strong> - Enhancing the resilience of IoT networks against emerging threats and vulnerabilities, including Social Internet of Things (SIoT)</li>
-                <li><strong>Adversarial Machine Learning</strong> - Examining multi-agent collusion risks and adversarial consensus in AI-based systems</li>
-                <li><strong>Semantic Web & Linked Data</strong> - Web of Objects (WoO), ontology-based systems, and real-time stream data analytics</li>
+                <li>AI-Driven Cybersecurity - Developing intelligent systems for threat detection, model hardening, adversarial defense, and secure AI implementations</li>
+                <li>AI Ethics and Safety - Exploring frameworks for explainability, trustworthy AI, and systemic safety in high-stakes domains like healthcare</li>
+                <li>Self-Healing AI Systems - Autonomous systems capable of detecting, diagnosing, and recovering from failures without human intervention</li>
+                <li>AI Governance - Investigating exploratory and evolutionary game-theoretical approaches to AI governance, safety, and multi-agent systems</li>
+                <li>Internet of Things (IoT) - Enhancing the resilience of IoT networks against emerging threats, including Social Internet of Things (SIoT)</li>
+                <li>Adversarial Machine Learning - Examining multi-agent collusion risks and adversarial consensus in AI-based systems</li>
+                <li>Semantic Web & Linked Data - Web of Objects (WoO), ontology-based systems, and real-time stream data analytics</li>
             </ul>
-            <p style="margin-top: 20px;">
-                I am particularly interested in bridging academic research with practical implementations to address real-world challenges affecting SMEs, local communities, and healthcare systems. My work combines theoretical foundations with applied solutions that create meaningful societal impact.
-            </p>
         </section>
         
         <section id="projects" class="section">
             <h3>Current & Recent Projects</h3>
-            
             <div class="project-box">
                 <h4>CyberPathway: Empowering Diversity in Cybersecurity</h4>
                 <p><strong>Funding:</strong> Innovate UK (2024-2025) | <strong>Role:</strong> Principal Investigator</p>
-                <p>Developing an online learning platform and sustainable cybersecurity education initiative to empower diverse communities and promote inclusivity in technology careers.</p>
+                <p>Developing an online learning platform and sustainable cybersecurity education initiative to empower diverse communities.</p>
             </div>
-            
             <div class="project-box">
                 <h4>SafeSCMS: Transforming Supply Chain Security for SMEs</h4>
                 <p><strong>Funding:</strong> Innovate UK (2024) | <strong>Role:</strong> Principal Investigator</p>
-                <p>Developing trustworthy AI and intelligent decision-making systems in real-time for supply chain management security, specifically targeting SME challenges.</p>
+                <p>Developing trustworthy AI and intelligent decision-making systems in real-time for supply chain management security.</p>
             </div>
-            
             <div class="project-box">
                 <h4>CyberThemis & OPERA</h4>
                 <p><strong>Funding:</strong> Innovate UK (2024) | <strong>Role:</strong> Co-Investigator</p>
-                <p>Projects focusing on operationalizing privacy for enhanced robustness in applications and developing AI governance frameworks.</p>
+                <p>Projects focusing on operationalizing privacy for enhanced robustness in applications and AI governance frameworks.</p>
             </div>
-            
             <div class="project-box">
                 <h4>iShield: AI-enabled Healthcare IoT Security</h4>
                 <p><strong>Funding:</strong> KTP-CyberASAP (2021) | <strong>Role:</strong> Researcher</p>
@@ -340,99 +408,91 @@
         
         <section id="teaching" class="section">
             <h3>Teaching & Supervision</h3>
-            
-            <h4 style="color: #1a472a; margin-top: 20px; margin-bottom: 10px;">Postgraduate Modules</h4>
-            <ul style="padding-left: 20px;">
+            <h4 style="color: #1a472a; margin-bottom: 8px;">Postgraduate Modules</h4>
+            <ul style="padding-left: 20px; margin-bottom: 15px;">
                 <li>Artificial Intelligence Ethics and Applications</li>
                 <li>Cyber Risk and Vulnerability Management</li>
                 <li>Ethical Hacking Techniques</li>
                 <li>Computing Masters Project</li>
                 <li>Research Methods</li>
             </ul>
-            
-            <h4 style="color: #1a472a; margin-top: 20px; margin-bottom: 10px;">Undergraduate Modules</h4>
-            <ul style="padding-left: 20px;">
+            <h4 style="color: #1a472a; margin-bottom: 8px;">Undergraduate Modules</h4>
+            <ul style="padding-left: 20px; margin-bottom: 15px;">
                 <li>Ethical Hacking</li>
                 <li>Security Analyst</li>
                 <li>Secure Data Acquisition</li>
                 <li>Computing Project</li>
             </ul>
-            
-            <h4 style="color: #1a472a; margin-top: 20px; margin-bottom: 10px;">PhD Supervision</h4>
-            <p>Currently supervising <strong>five PhD students</strong> specializing in cybersecurity and AI. Open to supervising additional students with external funding/scholarships in areas related to cybersecurity, AI safety, AI governance, and IoT security.</p>
+            <h4 style="color: #1a472a; margin-bottom: 8px;">PhD Supervision</h4>
+            <p>Currently supervising five PhD students specializing in cybersecurity and AI. Open to supervising additional students with external funding/scholarships.</p>
         </section>
         
         <section id="publications" class="section">
             <h3>Selected Publications</h3>
-            
             <div class="publication">
-                1. Hossain, M. M., Han, T. A., Ara, S. S., & <strong>Shamszaman, Z. U.</strong> (2025). <em>"Benchmarking Classical, Deep, and Generative Models for Human Activity Recognition"</em>. arXiv preprint. 
-                <a href="https://arxiv.org/abs/2501.08321" target="_blank">arXiv:2501.08321</a>
+                1. Bashir, A., <strong>Shamszaman, Z. U.</strong> (2025). "Many-to-One Adversarial Consensus: Exposing Multi-Agent Collusion Risks in AI-Based Healthcare". <a href="https://arxiv.org/abs/2512.03097" target="_blank">arXiv:2512.03097</a>
             </div>
-            
             <div class="publication">
-                2. Bashir, A., <strong>Shamszaman, Z. U.</strong>, Song, Z., & Han, T. A. (2025). <em>"Co-evolutionary Dynamics of Attack and Defence in Cybersecurity"</em>. arXiv preprint. 
-                <a href="https://arxiv.org/abs/2505.19338" target="_blank">arXiv:2505.19338</a>
+                2. Hasan, T., Anjom, J., Hossain, M. I. A., <strong>Shamszaman, Z. U.</strong> (2025). "SatNet-B3: A Lightweight Deep Edge Intelligence Framework for Satellite Imagery Classification". Preprints.
             </div>
-            
             <div class="publication">
-                3. Buscemi, A., Proverbio, D., et al., <strong>Shamszaman, Z. U.</strong>, et al. (2025). <em>"Do LLMs trust AI regulation? Emerging behaviour of game-theoretic LLM agents"</em>. arXiv preprint. 
-                <a href="https://arxiv.org/abs/2504.08640" target="_blank">arXiv:2504.08640</a>
+                3. da Fonseca, H. C., et al., <strong>Shamszaman, Z. U.</strong>, et al. (2025). "Can Media Act as a Soft Regulator of Safe AI Development? A Game Theoretical Analysis". Artificial Life Conference Proceedings 37(1), 90. <a href="https://arxiv.org/abs/2509.02650" target="_blank">arXiv</a>
             </div>
-            
             <div class="publication">
-                4. Balabanova, N., Bashir, A., et al., <strong>Shamszaman, Z. U.</strong>, et al. (2025). <em>"Media and responsible AI governance: a game-theoretic and LLM analysis"</em>. arXiv preprint. 
-                <a href="https://arxiv.org/abs/2503.09858" target="_blank">arXiv:2503.09858</a>
+                4. Mishra, S., et al., <strong>Shamszaman, Z. U.</strong> (2025). "Predicting Antimicrobial Resistance (AMR) in Campylobacter Using Machine Learning". <a href="https://arxiv.org/abs/2509.03551" target="_blank">arXiv:2509.03551</a>
             </div>
-            
             <div class="publication">
-                5. da Fonseca, H. C., et al., <strong>Shamszaman, Z. U.</strong>, et al. (2025). <em>"Can Media Act as a Soft Regulator of Safe AI Development? A Game Theoretical Analysis"</em>. arXiv preprint. 
-                <a href="https://arxiv.org/abs/2509.02650" target="_blank">arXiv:2509.02650</a>
+                5. Bashir, A., <strong>Shamszaman, Z. U.</strong>, Song, Z., Han, T. A. (2025). "Co-evolutionary Dynamics of Attack and Defence in Cybersecurity". <a href="https://arxiv.org/abs/2505.19338" target="_blank">arXiv:2505.19338</a>
             </div>
-            
             <div class="publication">
-                6. Mishra, S., Han, T. A., Lopes, B. S., Ghareeb, S., & <strong>Shamszaman, Z. U.</strong> (2025). <em>"Predicting Antimicrobial Resistance (AMR) in Campylobacter, a Foodborne Pathogen, and Cost Burden Analysis Using Machine Learning"</em>. arXiv preprint. 
-                <a href="https://arxiv.org/abs/2509.03551" target="_blank">arXiv:2509.03551</a>
+                6. Buscemi, A., et al., <strong>Shamszaman, Z. U.</strong>, et al. (2025). "Do LLMs trust AI regulation? Emerging behaviour of game-theoretic LLM agents". <a href="https://arxiv.org/abs/2504.08640" target="_blank">arXiv:2504.08640</a> - <span style="color: #2d5f3f; font-weight: 600;">10 citations</span>
             </div>
-            
             <div class="publication">
-                7. <strong>Shamszaman, Z. U.</strong>, Ara, S. S., Chong, I., & Jeong, Y. K. (2014). <em>"Web-of-Objects (WoO)-Based Context Aware Emergency Fire Management Systems for the Internet of Things"</em>. Sensors, 14(2), 2944-2966. 
-                <a href="https://doi.org/10.3390/s140202944" target="_blank">DOI: 10.3390/s140202944</a>
+                7. Balabanova, N., et al., <strong>Shamszaman, Z. U.</strong>, et al. (2025). "Media and responsible AI governance: a game-theoretic and LLM analysis". <a href="https://arxiv.org/abs/2503.09858" target="_blank">arXiv:2503.09858</a> - <span style="color: #2d5f3f; font-weight: 600;">9 citations</span>
             </div>
-            
             <div class="publication">
-                8. <strong>Shamszaman, Z. U.</strong> & Ali, M. I. <em>"Enabling cognitive contributory societies using SIoT: QoS aware real-time virtual object management"</em>. Journal of Parallel and Distributed Computing.
+                8. Hossain, M. M., Han, T. A., Ara, S. S., <strong>Shamszaman, Z. U.</strong> (2025). "Benchmarking Classical, Deep, and Generative Models for Human Activity Recognition". <a href="https://arxiv.org/abs/2501.08471" target="_blank">arXiv:2501.08471</a> - <span style="color: #2d5f3f; font-weight: 600;">6 citations</span>
             </div>
-            
-            <p style="margin-top: 30px;">
-                <strong>Total Citations:</strong> 472+ (Google Scholar) | 
-                For a complete list of publications, please visit my 
-                <a href="https://scholar.google.com/citations?user=KcI7-DAAAAAJ&hl=en" target="_blank">Google Scholar profile</a> or 
-                <a href="https://research.tees.ac.uk/en/persons/zia-shamszaman/publications/" target="_blank">Teesside Research Portal</a>.
-            </p>
+            <div class="publication">
+                9. Olumuyiwa, B. I., Han, T. A., <strong>Shamszaman, Z. U.</strong> (2024). "Enhancing Cancer Diagnosis with Explainable & Trustworthy Deep Learning Models". <a href="https://arxiv.org/abs/2412.17527" target="_blank">arXiv:2412.17527</a> - <span style="color: #2d5f3f; font-weight: 600;">3 citations</span>
+            </div>
+            <div class="publication">
+                10. Hossain, M. I. A., Tabassum, A., <strong>Shamszaman, Z. U.</strong> (2023). "Deep edge intelligence-based solution for heart failure prediction in ambient assisted living". Discover Internet of Things, 3(1), 11. - <span style="color: #2d5f3f; font-weight: 600;">8 citations</span>
+            </div>
+            <div class="publication">
+                11. Yeboah-Ofori, A., Islam, S., Lee, S. W., <strong>Shamszaman, Z. U.</strong>, et al. (2021). "Cyber threat predictive analytics for improving cyber supply chain security". IEEE Access, 9, 94318-94337. - <span style="color: #2d5f3f; font-weight: 600;">167 citations</span>
+            </div>
+            <div class="publication">
+                12. <strong>Shamszaman, Z. U.</strong>, Ali, M. I. (2019). "Enabling cognitive contributory societies using SIoT: QoS aware real-time virtual object management". Journal of Parallel and Distributed Computing, 123, 61-68. - <span style="color: #2d5f3f; font-weight: 600;">12 citations</span>
+            </div>
+            <div class="publication">
+                13. <strong>Shamszaman, Z. U.</strong>, Ali, M. I. (2018). "Towards a smart society through semantic virtual-object enabled real-time management framework in the social internet of things". IEEE Internet of Things Journal, 5(4), 2572-2579. - <span style="color: #2d5f3f; font-weight: 600;">38 citations</span>
+            </div>
+            <div class="publication">
+                14. Ali, M. I., Ono, N., Kaysar, M., <strong>Shamszaman, Z. U.</strong>, et al. (2017). "Real-time data analytics and event detection for IoT-enabled communication systems". Journal of Web Semantics, 42, 19-37. - <span style="color: #2d5f3f; font-weight: 600;">68 citations</span>
+            </div>
+            <div class="publication">
+                15. <strong>Shamszaman, Z. U.</strong>, Ara, S. S., Chong, I., Jeong, Y. K. (2014). "Web-of-Objects (WoO)-Based Context Aware Emergency Fire Management Systems for the Internet of Things". Sensors, 14(2), 2944-2966. - <span style="color: #2d5f3f; font-weight: 600;">55 citations</span>
+            </div>
+            <p style="margin-top: 20px;"><strong>Total Citations:</strong> 472+ (Google Scholar) | For a complete list, visit my <a href="https://scholar.google.com/citations?user=KcI7-DAAAAAJ&hl=en" target="_blank">Google Scholar</a> or <a href="https://research.tees.ac.uk/en/persons/zia-shamszaman/publications/" target="_blank">Research Portal</a>.</p>
         </section>
         
         <section id="service" class="section">
             <h3>Professional Service & Recognition</h3>
-            
-            <h4 style="color: #1a472a; margin-bottom: 10px;">Memberships</h4>
-            <ul style="padding-left: 20px; margin-bottom: 20px;">
+            <h4 style="color: #1a472a; margin-bottom: 8px;">Memberships</h4>
+            <ul style="padding-left: 20px; margin-bottom: 15px;">
                 <li>Senior Member, IEEE</li>
+                <li>Member, British Computer Society (BCS)</li>
                 <li>Member, Elsevier Advisory Panel</li>
                 <li>Member, World Wide Web Consortium (W3C)</li>
                 <li>Member, IEEE AI, IoT, Cloud Computing, Big Data, and Digital Privacy Communities</li>
             </ul>
-            
-            <h4 style="color: #1a472a; margin-bottom: 10px;">Invited Talks & Keynotes</h4>
-            <ul style="padding-left: 20px; margin-bottom: 20px;">
+            <h4 style="color: #1a472a; margin-bottom: 8px;">Invited Talks & Keynotes</h4>
+            <ul style="padding-left: 20px; margin-bottom: 15px;">
                 <li>Keynote Speaker: "Trusting automated responses to your incident response", teisslondon, UK (September 2023)</li>
-                <li>Invited Seminar: "Recent Research Trends and Opportunities in IoT and Cybersecurity", Green University of Bangladesh (June 2022)</li>
+                <li>Invited Seminar: "Recent Research Trends in IoT and Cybersecurity", Green University of Bangladesh (June 2022)</li>
             </ul>
-            
-            <h4 style="color: #1a472a; margin-bottom: 10px;">Reviewer Service</h4>
-            <p>Regular reviewer for top-tier journals including Information Fusion (IF 10.716), IEEE Communications Magazine (IF 10.356), IEEE Internet of Things Journal (IF 9.515), IEEE Transactions on Industrial Informatics, and conferences including SPELLL, IEEE World Forum on IoT, and International Conference on Sustainable Technologies 4.0.</p>
-            
-            <h4 style="color: #1a472a; margin-top: 20px; margin-bottom: 10px;">Awards</h4>
+            <h4 style="color: #1a472a; margin-bottom: 8px;">Awards</h4>
             <ul style="padding-left: 20px;">
                 <li>Outstanding Contribution in Reviewing - Journal of Network and Computer Applications (Elsevier)</li>
                 <li>Outstanding Contribution in Reviewing - Future Generation Computer Systems (Elsevier)</li>
@@ -444,7 +504,7 @@
         
         <section id="contact" class="section">
             <h3>Contact & Links</h3>
-            <p style="margin-bottom: 15px;">
+            <p style="margin-bottom: 12px;">
                 <strong>Email:</strong> Z.Shamszaman@tees.ac.uk<br>
                 <strong>Office:</strong> School of Computing, Engineering & Digital Technologies, Teesside University<br>
                 <strong>Location:</strong> Middlesbrough, United Kingdom
@@ -460,9 +520,9 @@
         </section>
     </div>
     
-    <footer style="background: #f8f9fa; padding: 20px; text-align: center; margin-top: 50px; border-top: 1px solid #ddd;">
+    <footer style="background: linear-gradient(135deg, #1a472a 0%, #2d5f3f 100%); color: white; padding: 20px; text-align: center; margin-top: 0;">
         <p>&copy; 2024 Dr. Zia Ush Shamszaman. All rights reserved.</p>
-        <p style="margin-top: 5px; font-size: 0.9em; color: #666;">Senior Lecturer in Computer Science | Teesside University</p>
+        <p style="margin-top: 5px; font-size: 0.9em; opacity: 0.9;">Senior Lecturer in Computer Science | Teesside University</p>
     </footer>
 </body>
 </html>
